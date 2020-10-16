@@ -34,6 +34,15 @@
         </v-row>
 
         <v-row>
+            <v-col cols="12">
+                <job-form href="{{route('save-job')}}">
+                    @csrf
+                </job-form>
+            </v-col>
+        </v-row>
+
+
+        <v-row>
             {{$jobs->links()}}
         </v-row>
 
@@ -44,5 +53,9 @@
 @endsection
 
 
-
-
+<script>
+    import JobForm from "../js/components/JobForm";
+    export default {
+        components: {JobForm}
+    }
+</script>

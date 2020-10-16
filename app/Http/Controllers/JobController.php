@@ -13,4 +13,13 @@ class JobController extends Controller
         $jobs = Job::paginate(10);
         return view('welcome',['jobs'=>$jobs]);
     }
+
+    public function store(Request $request) {
+
+        dd($request->details);
+
+    }
+
+
+
 }

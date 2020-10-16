@@ -9,6 +9,8 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import Vuetify from 'vuetify'
+import { extend } from 'vee-validate'
+import { required, email } from 'vee-validate/dist/rules'
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,6 +24,30 @@ import Vuetify from 'vuetify'
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.use(Vuetify)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('job-form',require('./components/JobForm.vue').default);
+Vue.component('editor',require('./components/editor.vue').default);
+
+/**
+ * Vee-validate form validation rules
+ */
+
+extend('positive', value => {
+    if (value >= 0) {
+        return true
+    }
+
+    return 'The field must be a positive number. field name is {_field_}'
+})
+
+extend('required', {
+    ...required,
+    message: '{_field_} is required'
+})
+
+extend('email', {
+    ...email,
+    message: 'email must be valid'
+})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

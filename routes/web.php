@@ -20,3 +20,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/jobs/create',[\App\Http\Controllers\EmployerDataController::class,'create'])->name('create-job');
+Route::post('/save-job',[JobController::class,'store'])->name('save-job');
