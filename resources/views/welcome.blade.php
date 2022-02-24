@@ -8,38 +8,23 @@
 
         <v-row>
             <v-col cols="10">
-                <v-simple-table>
-                    <template v-slot:default>
-                        <thead>
-                        <tr>
-                            <th class="text-left">Title</th>
-                            <th class="text-left">Details</th>
-                            <th class="text-left">Address</th>
-                            <th class="text-left">Deadline</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($jobs as $job)
-                            <tr>
-                                <td>{{$job->title}}</td>
-                                <td> {{\Illuminate\Support\Str::limit($job->details,50)}}</td>
-                                <td>{{$job->address}}</td>
-                                <td>{{$job->deadline}}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </template>
-                </v-simple-table>
+                @foreach($jobs as $job)
+                    <job-card
+                        title="{{$job->title}}"
+                        link="/jobs/{{$job->id}}"
+                        link-text="Details"
+                    >{!! $job->details !!}</job-card>
+                @endforeach
             </v-col>
         </v-row>
 
-        <v-row>
-            <v-col cols="12">
-                <job-form href="{{route('save-job')}}">
-                    @csrf
-                </job-form>
-            </v-col>
-        </v-row>
+{{--        <v-row>--}}
+{{--            <v-col cols="12">--}}
+{{--                <job-form href="{{route('save-job')}}">--}}
+{{--                    @csrf--}}
+{{--                </job-form>--}}
+{{--            </v-col>--}}
+{{--        </v-row>--}}
 
 
         <v-row>

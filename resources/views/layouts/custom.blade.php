@@ -34,16 +34,22 @@
             <v-toolbar dense >
                 <v-app-bar-nav-icon></v-app-bar-nav-icon>
                 <v-toolbar-title>
-                    {{ config('app.name', 'Jobs') }}
+{{--                    {{ config('app.name', 'Jobs') }}--}}
+                    Cals Jobs
                 </v-toolbar-title>
+                @auth()
+                    <a style="margin-left: 25px" href="{{route('home')}}">Home</a>
+                    <a style="margin-left: 25px" href="{{route('create_job')}}">Add Job</a>
+                    <a style="margin-left: 25px" href="{{route('all-jobs')}}">Jobs</a>
+
+                @endauth
 
                 <v-spacer></v-spacer>
-
                 @guest
                     <a style="margin-right: 10px" href="{{route('login')}}">Login</a>
-                    @if (Route::has('register'))
-                        <a href="{{route('register')}}">Register</a>
-                    @endif
+{{--                    @if (Route::has('register'))--}}
+{{--                        <a href="{{route('register')}}">Register</a>--}}
+{{--                    @endif--}}
                 @else
                     <v-menu
                         offset-y

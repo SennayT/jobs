@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             'type' =>'admin'
         ]);
         User::factory()
-            ->times(50)
+            ->times(10)
             ->create()
             ->each(function ($user){
                 if($user->type === 'employer') {

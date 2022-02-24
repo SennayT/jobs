@@ -26,6 +26,9 @@ Vue.use(Vuetify)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('job-form',require('./components/JobForm.vue').default);
 Vue.component('editor',require('./components/editor.vue').default);
+Vue.component('application-form',require('./components/ApplicationForm').default);
+Vue.component('job-card',require('./components/JobCard').default);
+Vue.component('delete-dialog',require('./components/DeleteDialog').default);
 
 /**
  * Vee-validate form validation rules
