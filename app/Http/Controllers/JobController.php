@@ -136,7 +136,8 @@ class JobController extends Controller
 
 
     public function findApplicants($id) {
-        $app = Job::findOrFail($id)->applicants;
+        $app = Job::findOrFail($id)->applicants->where('accepted',0);
+       // $app = Applicant::where(['job_id',1]);
        return view('job.viewApplicants',['applicants'=>$app]);
     }
 

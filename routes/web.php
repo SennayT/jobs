@@ -35,5 +35,6 @@ Route::post('/save-job',[JobController::class,'store'])->name('save-job');
 
 Route::get('/applicant/{id}',[ApplicantController::class,'find']);
 Route::post('/delete/applicant/{id}',[ApplicantController::class,'delete']);
+Route::post('/accept/applicant/{id}',[ApplicantController::class,'accept'])->name('accept');
 
 //Route::get('/applicant/{id}/details');

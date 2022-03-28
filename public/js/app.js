@@ -2706,6 +2706,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2725,8 +2726,9 @@ __webpack_require__.r(__webpack_exports__);
     this.editor = new quill__WEBPACK_IMPORTED_MODULE_0___default.a(this.$refs.editor, {
       theme: 'snow'
     }); // console.log(this.value)
+    //this.editor.setText(`${this.value}\n`)
 
-    this.editor.setText("".concat(this.value, "\n"));
+    this.editor.clipboard.dangerouslyPasteHTML(0, this.value);
     this.editor.on('text-change', function (delta, oldDelta, source) {
       console.log("Source is: ".concat(source));
 
@@ -2738,6 +2740,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     update: function update() {
       this.$emit('input', this.editor.getText() ? this.editor.root.innerHTML : 'EMPTY');
+    },
+    parseHTML: function parseHTML(html) {
+      var t = document.createElement('template');
+      t.innerHTML = html;
+      return t.content;
     }
   },
   watch: {// value: function(newVal, oldVal) {

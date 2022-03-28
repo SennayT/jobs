@@ -4,7 +4,8 @@
 
 
 
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+{{--    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">--}}
+    <link href="{{ asset('css/tailwind.min.css') }}" rel="stylesheet">
 
     <v-container>
 
@@ -26,7 +27,7 @@
                                 <td>
                                     <a href="/jobs/edit/{{$job->id}}" >{{$job->title}}</a>
                                 </td>
-                                <td> {{\Illuminate\Support\Str::limit($job->details,50)}}</td>
+                                <td> {!! \Illuminate\Support\Str::limit($job->details,50) !!}</td>
                                 <td>{{$job->address}}</td>
                                 <td>{{$job->deadline}}</td>
                             </tr>

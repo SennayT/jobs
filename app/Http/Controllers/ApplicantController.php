@@ -45,4 +45,11 @@ class ApplicantController extends Controller
         Applicant::destroy($id);
         return redirect()->route('home');
     }
+
+    public function accept($id){
+        $applicant = Applicant::findOrFail($id);
+        $applicant->accepted = 1;
+        $applicant->save();
+        return redirect()->route('home');
+    }
 }

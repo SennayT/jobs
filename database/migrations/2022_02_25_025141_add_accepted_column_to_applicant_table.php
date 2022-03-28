@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddGradeColumnToEducationTable extends Migration
+class AddAcceptedColumnToApplicantTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddGradeColumnToEducationTable extends Migration
      */
     public function up()
     {
-        Schema::table('education', function (Blueprint $table) {
-            $table->string('grade'); // TODO Make this a decimal later
-
+        Schema::table('applicants', function (Blueprint $table) {
+            $table->string('accepted')->default(0);
         });
     }
 
@@ -26,7 +25,7 @@ class AddGradeColumnToEducationTable extends Migration
      */
     public function down()
     {
-        Schema::table('education', function (Blueprint $table) {
+        Schema::table('applicant', function (Blueprint $table) {
             //
         });
     }

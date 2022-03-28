@@ -1,8 +1,9 @@
 <template>
-   <div>
-       <div  style="height: 500px" ref="editor">
-       </div>
-   </div>
+    <div>
+        <div style="height: 500px" ref="editor">
+
+        </div>
+    </div>
 </template>
 
 <script>
@@ -13,7 +14,7 @@ import 'quill/dist/quill.snow.css'
 export default {
     name: 'editor',
     props: {
-        value:String
+        value: String
     },
     data() {
         return {
@@ -27,19 +28,25 @@ export default {
 
         // console.log(this.value)
 
-        this.editor.setText(`${this.value}\n`)
+        //this.editor.setText(`${this.value}\n`)
+        this.editor.clipboard.dangerouslyPasteHTML(0,this.value)
 
         this.editor.on('text-change', (delta, oldDelta, source) => {
             console.log(`Source is: ${source}`)
-            if(source === 'user') {
+            if (source === 'user') {
                 this.update()
             }
         })
-     //   this.x = this.value
+        //   this.x = this.value
     },
     methods: {
         update() {
             this.$emit('input', this.editor.getText() ? this.editor.root.innerHTML : 'EMPTY')
+        },
+        parseHTML(html) {
+            var t = document.createElement('template');
+            t.innerHTML = html;
+            return t.content;
         }
     },
     watch: {
@@ -48,8 +55,8 @@ export default {
         // }
     },
     updated() {
-       // console.log(`Value is ${this.value}`)
-       // this.editor.setText(`${this.value}\n`)
+        // console.log(`Value is ${this.value}`)
+        // this.editor.setText(`${this.value}\n`)
     }
 }
 </script>

@@ -132,7 +132,10 @@
 
     <v-row>
         <v-col cols="4">
-            <v-btn color="primary">Accept</v-btn>
+            <form method="post" action="{{route('accept',$applicant->id)}}">
+                @CSRF
+                <v-btn type="submit" color="primary">Accept</v-btn>
+            </form>
         </v-col>
         <v-col cols="4">
             <delete-dialog action="/delete/applicant/{{$applicant->id}}">

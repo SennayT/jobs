@@ -7,7 +7,7 @@
         email_prop="{{$job->email}}"
         address_prop="{{$job->address}}"
         deadline_prop="{{$job->deadline}}"
-        details="{{$job->details}}"
+        details="{!! $job->details !!}"
     >
         @CSRF
         <input type="hidden" name="user_id" value="{{$user_id}}"/>
